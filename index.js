@@ -543,3 +543,108 @@ function userAdminCount(array) {
 }
 //console.log(userAdminCount(users))
 console.log(userDataSelection(users, 6))
+
+//function showMessages(callback) {
+//  setTimeout(() => {
+//    console.log("1");
+//    setTimeout(() => {
+//      callback(`3`);
+//      setTimeout(() => {
+//        console.log("2");
+//      }, 1000);
+//    }, 1000);
+//  }, 1000);
+//}
+//showMessages((message) => {
+//    console.log(message);
+//});
+
+//function showMessages2(callback) {
+//  setTimeout(() => {
+//    console.log("1");
+//      callback(`3`);
+//      setTimeout(() => {
+//        console.log("2");
+//      }, 1000);
+//  }, 1000);
+//}
+//showMessages2((message) => {
+//    console.log(message);
+//});
+
+//function testeo(callback) {
+//    setTimeout(() => {
+//        callback(`hola`);
+//        console.log("chau");
+//    }, 2000)
+//};
+//
+//testeo((message) => {
+//    console.log(message);
+//});
+
+//function nombreVacio(nombre) {
+//    let temp = []
+//    for (let chr of nombre) {
+//        if (chr != ' '  && chr != '') {
+//            temp.push(chr)
+//        }
+//    }
+//    if (temp.length > 0) {
+//        return false;
+//    } else {
+//        return true;
+//    }
+//}
+//
+//function saludoPrometido(nombre) {
+//    return new Promise((resolve, reject) => {
+//        const number = Math.floor(Math.random() * 10);
+//        setTimeout(() => {
+//            if (number > 2) {
+//                if (nombreVacio(nombre)) {
+//                    reject("Nombre vacío.");
+//                } else {
+//                    resolve(nombre)
+//                }
+//            } else {
+//                reject("Número demasiado bajo");
+//            }
+//        }, 1000);
+//    });
+//}
+//console.log("Promesa hecha")
+//console.log("Promesa pendiente")
+//
+//saludoPrometido("             ")
+//    .then((nombre) => {
+//        console.log("¡Hola,", nombre + "!");
+//    })
+//    .catch((err) => {
+//        console.log("Algo explotó:", err);
+//    })
+//    .finally(() => {
+//        console.log(String.fromCodePoint(128681),"Fin del proceso")
+//    })
+
+function loadUser() {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve("👤 Usuario conectado"), 1000);
+    });
+}
+
+function loadNotifications() {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve('["🔔 Notificación 1", "🔔 Notificación 2"]'), 1500);
+    });
+}
+
+async function miniDashboard() {
+    const user = await loadUser();
+    console.log(user)
+    const notifs = await loadNotifications();
+    console.log(notifs)
+    
+    console.log("✅ Dashboard listo!")
+}
+miniDashboard()
