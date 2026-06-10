@@ -1,6 +1,5 @@
-get
-post
-put
-patch
-delete
+Create = post
+Read = get
+Update = put o patch
+Delete = delete
 CRUD = CreateReadUpdateDelete
