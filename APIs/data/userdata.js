@@ -7,3 +7,5 @@ const userdata = [
 ];
 
 export { userdata };
+
+//tablita supabase

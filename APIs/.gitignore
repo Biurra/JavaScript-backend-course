@@ -1,0 +1,4 @@
+.env
+sensible.env
+*.env
+node_modules/

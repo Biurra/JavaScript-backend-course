@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+
+# Environment variables / Secrets
+*.env
+.env
+.env.*
+sensible.env
+APIs/sensible.env
+
+# OS files
+.DS_Store
+Thumbs.db
