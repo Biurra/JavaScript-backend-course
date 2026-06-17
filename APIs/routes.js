@@ -1,8 +1,6 @@
 import sql, { app } from './utilities/sql.js';
 import tts from './utilities/tts.js';
-import { readFile } from 'fs';
-import { join } from 'path';
-import { getUsers, postUsers } from './controllers.js';
+import * as controllers from './controllers.js';
 
 
 app.use((req, res, next) => {
@@ -16,21 +14,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/users', async (req, res) => {
-    await getUsers(req, res);
+    await controllers.getUsers(req, res);
     tts('These are the users registered in our website.');
-
 });
 
-app.post('/users', postUsers);
+app.post('/users', controllers.postUsers);
+app.patch('/users', controllers.updateUsers);
+app.delete('/users', controllers.deleteUsers);
 
-//app.get('/instruments', async (req, res) => {
-//    await getInstruments(req, res);
-//    tts('For a detailed view of our catalogue, please select one of the following.');
-//});
-//
-//app.get('/instruments/bass', getInstBass);
-//app.get('/instruments/guitar', getInstGuitar);
-//app.get('/instruments/keyboards', getInstKeys);
+app.get('/instruments', controllers.getInstruments);
+app.post('/instruments', controllers.postInstruments);
+app.get('/instruments/bass', controllers.getInstBass);
+app.get('/instruments/guitar', controllers.getInstGuitar);
+app.get('/instruments/keyboards', controllers.getInstKeys);
 
 
 const PORT = 3000;
