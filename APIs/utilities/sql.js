@@ -1,3 +1,4 @@
+import express from 'express';
 import postgres from 'postgres';
 import dotenv from 'dotenv';
 
@@ -16,5 +17,8 @@ const sql = postgres({
     ssl: 'require'
 });
 
-//NOTA: usar "export default" cuando un archivo tiene una función en particular => usar siempre para "utilities"
+//NOTA: usar "export default" cuando un archivo tiene una función en particular => usar CASI siempre para "utilities"
+//Al importar, no se ponen los {}, se lo llama así nomás, como en postgres o express. 
+export { app };
 export default sql;
+

@@ -1,7 +1,8 @@
-import express from 'express';
+import sql, { app } from './utilities/sql.js';
+import tts from './utilities/tts.js';
 import { readFile } from 'fs';
 import { join } from 'path';
-import { userdata } from './data/userdata.js';
+import { getUsers, postUsers } from './controllers.js';
 
 
 app.use((req, res, next) => {
@@ -11,19 +12,25 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
     res.send('Probando, probando... 1, 2, 3...')
+    tts('Testing, testing... 1, 2, 3... Welcome to my humble and very first A.P.I.')
 });
 
-app.get('/users', (req, res) => {
-    res.send(userdata);
+app.get('/users', async (req, res) => {
+    await getUsers(req, res);
+    tts('These are the users registered in our website.');
+
 });
 
-app.post('/users', (req, res) => {
-    const newUser = req.body;
-    console.log('Usuario registrado:', newUser);
-    userdata.push(newUser)
-    // {"username": '"pablo", "id": 5304, "email": "pablitoclavounclavito@clavo.com", "age": 175} 
-    res.status(201).json(newUser);
-})
+app.post('/users', postUsers);
+
+//app.get('/instruments', async (req, res) => {
+//    await getInstruments(req, res);
+//    tts('For a detailed view of our catalogue, please select one of the following.');
+//});
+//
+//app.get('/instruments/bass', getInstBass);
+//app.get('/instruments/guitar', getInstGuitar);
+//app.get('/instruments/keyboards', getInstKeys);
 
 
 const PORT = 3000;
