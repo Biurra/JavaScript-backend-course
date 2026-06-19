@@ -24,10 +24,10 @@ app.delete('/users', controllers.deleteUsers);
 
 app.get('/instruments', controllers.getInstruments);
 app.post('/instruments', controllers.postInstruments);
-app.get('/instruments/bass', controllers.getInstBass);
-app.get('/instruments/guitar', controllers.getInstGuitar);
-app.get('/instruments/keyboards', controllers.getInstKeys);
+app.post('/instruments', controllers.updateInstruments);
+app.delete('/instruments', controllers.delInstruments);
 
+app.get('/instruments/:type', controllers.filterInstType)
 
 const PORT = 3000;
 app.listen(PORT, () => {

@@ -1,7 +1,4 @@
-import retail_price from './controllers.js';
-
 function cashDiscount(x) {
-    return x - (x * 0.1)
+    return Math.floor(Math.round(x * 90) / 100);
 }
-
 export default cashDiscount
