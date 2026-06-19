@@ -27,7 +27,7 @@ app.post('/instruments', controllers.postInstruments);
 app.post('/instruments', controllers.updateInstruments);
 app.delete('/instruments', controllers.delInstruments);
 
-app.get('/instruments/:type', controllers.filterInstType)
+app.get('/instruments/:type', controllers.filterInstType);
 
 const PORT = 3000;
 app.listen(PORT, () => {
