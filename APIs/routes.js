@@ -27,7 +27,11 @@ app.post('/instruments', controllers.postInstruments);
 app.post('/instruments', controllers.updateInstruments);
 app.delete('/instruments', controllers.delInstruments);
 
-app.get('/instruments/:type', controllers.filterInstType);
+app.get('/instruments/type/:type', controllers.filterInstType);
+app.get('/instruments/brand/:brand', controllers.filterInstBrand);
+app.get('/instruments/model/:model', controllers.filterInstModel);
+app.get('/instruments/price_asc/:price_asc', controllers.filterInstPriceAsc);
+app.get('/instruments/price_dsc/:price_dsc', controllers.filterInstPriceDsc);
 
 const PORT = 3000;
 app.listen(PORT, () => {

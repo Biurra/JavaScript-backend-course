@@ -162,10 +162,63 @@ async function filterInstType(req, res) {
     }
 }
 async function filterInstBrand(req, res) {
+    const { brand } = req.params;
+    try {
+        const filtered = await sql`
+        SELECT * FROM instruments
+        WHERE brand = ${brand}
+        `;
+        console.log('Instrumentos filtrados correctamente');
+        res.status(200).json(filtered);
+    } catch (error) {
+        console.error('Error en "filterInstBrand":', error);
+        res.status(500).json('Error al filtrar por marca');
+    }
 }
 async function filterInstModel(req, res) {
+    const { model } = req.params;
+    try {
+        const filtered = await sql`
+        SELECT * FROM instruments
+        WHERE model = ${model}
+        `;
+        console.log('Instrumentos filtrados correctamente');
+        res.status(200).json(filtered);
+    } catch (error) {
+        console.error('Error en "filterInstModel":', error);
+        res.status(500).json('Error al filtrar por modelo');
+    }
 }
-async function filterInstPrice(req, res) {
+async function filterInstPriceAsc(req, res) {
+    try {
+        const filtered = await sql`
+        SELECT * FROM instruments
+        ORDER BY retail_price ASC
+        `;
+        console.log(filtered)
+        console.log('Instrumentos filtrados correctamente');
+        res.status(200).json(filtered);
+    } catch (error) {
+        console.error('Error en "filterInstPriceAsc":', error);
+        res.status(500).json('Error al filtrar por precio');
+    }
+}
+async function filterInstPriceDsc(req, res) {
+    try {
+        const filtered = await sql`
+        SELECT * FROM instruments
+        ORDER BY retail_price DESC
+        `;
+        console.log('Instrumentos filtrados correctamente');
+        res.status(200).json(filtered);
+    } catch (error) {
+        console.error('Error en "filterInstPriceDsc":', error);
+        res.status(500).json('Error al filtrar por precio');
+    }
 }
 
-export { getUsers, postUsers, updateUsers, deleteUsers, getInstruments, postInstruments, updateInstruments, delInstruments, filterInstType, filterInstBrand, filterInstModel, filterInstPrice };
+
+export { getUsers, postUsers, updateUsers, deleteUsers,
+    getInstruments, postInstruments, updateInstruments, delInstruments,
+    filterInstType, filterInstBrand, filterInstModel, filterInstPriceAsc, filterInstPriceDsc
+};
