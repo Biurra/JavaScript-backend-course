@@ -217,7 +217,6 @@ async function filterInstPriceDsc(req, res) {
     }
 }
 
-
 export { getUsers, postUsers, updateUsers, deleteUsers,
     getInstruments, postInstruments, updateInstruments, delInstruments,
     filterInstType, filterInstBrand, filterInstModel, filterInstPriceAsc, filterInstPriceDsc
